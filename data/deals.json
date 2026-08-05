@@ -1,0 +1,86 @@
+[
+  {
+    "id": "d1",
+    "stage": "new",
+    "client": "Иван Петров",
+    "company": "ООО «Вымпел»",
+    "phone": "79991234567",
+    "amount": 145000,
+    "manager": "Алина С.",
+    "due": "2026-08-10",
+    "source": "Wildberries",
+    "tags": ["маркетплейс", "срочно"]
+  },
+  {
+    "id": "d2",
+    "stage": "new",
+    "client": "Ольга Смирнова",
+    "company": "ИП Смирнова",
+    "phone": "79992221100",
+    "amount": 62000,
+    "manager": "Денис К.",
+    "due": "2026-08-12",
+    "source": "Ozon",
+    "tags": ["маркетплейс"]
+  },
+  {
+    "id": "d3",
+    "stage": "qualification",
+    "client": "Сергей Ким",
+    "company": "ООО «АгроТрейд»",
+    "phone": "79993334455",
+    "amount": 320000,
+    "manager": "Алина С.",
+    "due": "2026-08-09",
+    "source": "Сайт",
+    "tags": ["крупная сделка"]
+  },
+  {
+    "id": "d4",
+    "stage": "negotiation",
+    "client": "Мария Волкова",
+    "company": "ИП Волкова",
+    "phone": "79995556677",
+    "amount": 98000,
+    "manager": "Денис К.",
+    "due": "2026-08-15",
+    "source": "Wildberries",
+    "tags": ["повтор"]
+  },
+  {
+    "id": "d5",
+    "stage": "invoice",
+    "client": "Артём Novikov",
+    "company": "ООО «ТехноСклад»",
+    "phone": "79997778899",
+    "amount": 410000,
+    "manager": "Алина С.",
+    "due": "2026-08-08",
+    "source": "Рекомендация",
+    "tags": ["крупная сделка", "приоритет"]
+  },
+  {
+    "id": "d6",
+    "stage": "won",
+    "client": "Наталья Егорова",
+    "company": "ИП Егорова",
+    "phone": "79991112233",
+    "amount": 75000,
+    "manager": "Денис К.",
+    "due": "2026-07-28",
+    "source": "Ozon",
+    "tags": []
+  },
+  {
+    "id": "d7",
+    "stage": "lost",
+    "client": "Павел Игнатов",
+    "company": "ООО «Старт»",
+    "phone": "79994443322",
+    "amount": 54000,
+    "manager": "Алина С.",
+    "due": "2026-07-25",
+    "source": "Сайт",
+    "tags": ["отказ по цене"]
+  }
+]

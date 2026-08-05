@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM · Воронка сделок</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__left">
+    <span class="logo">A2 <strong>CRM</strong></span>
+    <nav class="tabs">
+      <a class="tab tab--active" href="#" data-view="deals" id="tabDeals">Сделки</a>
+      <a class="tab" href="#" data-view="clients" id="tabClients">Клиенты</a>
+      <a class="tab tab--disabled" href="#">Задачи</a>
+      <a class="tab tab--disabled" href="#">Аналитика</a>
+    </nav>
+  </div>
+  <div class="topbar__right">
+    <div class="role-switch">
+      <label for="roleSelect">Роль:</label>
+      <select id="roleSelect">
+        <option value="manager">Менеджер</option>
+        <option value="admin">Администратор</option>
+      </select>
+    </div>
+    <div class="user-chip">
+      <span class="avatar">АС</span>
+      <span>Алина С.</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div id="dealsView" class="view view--active">
+
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="Поиск по клиенту, компании, телефону…">
+
+    <select id="managerFilter">
+      <option value="">Все менеджеры</option>
+      <option value="Алина С.">Алина С.</option>
+      <option value="Денис К.">Денис К.</option>
+    </select>
+
+    <select id="sourceFilter">
+      <option value="">Все источники</option>
+      <option value="Wildberries">Wildberries</option>
+      <option value="Ozon">Ozon</option>
+      <option value="Сайт">Сайт</option>
+      <option value="Рекомендация">Рекомендация</option>
+    </select>
+
+    <label class="checkbox">
+      <input type="checkbox" id="onlyOverdue">
+      Только просроченные
+    </label>
+
+    <button id="addDealBtn" class="btn btn--primary">+ Новая сделка</button>
+    <button id="fieldBuilderBtn" class="btn">Конструктор полей</button>
+  </section>
+
+  <section class="stats" id="stats"></section>
+
+  <div class="board" id="board"></div>
+
+</div>
+
+<div id="clientsView" class="view">
+
+  <section class="toolbar">
+    <input id="clientSearch" type="search" placeholder="Поиск по имени, компании, телефону…">
+
+    <select id="clientManagerFilter">
+      <option value="">Все менеджеры</option>
+      <option value="Алина С.">Алина С.</option>
+      <option value="Денис К.">Денис К.</option>
+    </select>
+
+    <select id="clientSourceFilter">
+      <option value="">Все источники</option>
+      <option value="Wildberries">Wildberries</option>
+      <option value="Ozon">Ozon</option>
+      <option value="Сайт">Сайт</option>
+      <option value="Рекомендация">Рекомендация</option>
+    </select>
+
+    <button id="addClientBtn" class="btn btn--primary">+ Новый клиент</button>
+  </section>
+
+  <section class="stats" id="clientStats"></section>
+
+  <div class="clients-grid" id="clientsGrid"></div>
+
+</div>
+
+</main>
+
+<!-- Карточка сделки -->
+<div class="modal-overlay" id="dealModalOverlay">
+  <div class="modal" id="dealModal">
+    <button class="modal__close" data-close>&times;</button>
+    <h2 id="modalTitle">Сделка</h2>
+
+    <div class="modal__grid">
+      <label>Клиент
+        <input type="text" id="f_client">
+      </label>
+      <label>Компания
+        <input type="text" id="f_company">
+      </label>
+      <label>Телефон
+        <input type="tel" id="f_phone" inputmode="numeric" pattern="[0-9]*" placeholder="только цифры">
+      </label>
+      <label>Сумма, ₽
+        <input type="number" id="f_amount">
+      </label>
+      <label>Менеджер
+        <select id="f_manager">
+          <option>Алина С.</option>
+          <option>Денис К.</option>
+        </select>
+      </label>
+      <label>Источник
+        <select id="f_source">
+          <option>Wildberries</option>
+          <option>Ozon</option>
+          <option>Сайт</option>
+          <option>Рекомендация</option>
+        </select>
+      </label>
+      <label>Срок
+        <input type="date" id="f_due">
+      </label>
+      <label>Этап
+        <select id="f_stage"></select>
+      </label>
+    </div>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Пользовательские поля</div>
+      <div id="customFieldsList" class="custom-fields-list"></div>
+    </div>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Теги</div>
+      <input type="text" id="f_tags" placeholder="через запятую, напр.: срочно, повтор">
+    </div>
+
+    <div class="modal__actions">
+      <button class="btn btn--danger" id="deleteDealBtn">Удалить</button>
+      <button class="btn btn--primary" id="saveDealBtn">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Конструктор пользовательских полей -->
+<div class="modal-overlay" id="fieldModalOverlay">
+  <div class="modal" id="fieldModal">
+    <button class="modal__close" data-close>&times;</button>
+    <h2>Конструктор пользовательских полей</h2>
+    <p class="hint">Добавьте своё поле — оно появится в каждой карточке сделки.</p>
+
+    <div class="modal__grid">
+      <label>Название поля
+        <input type="text" id="newFieldName" placeholder="например, Артикул">
+      </label>
+      <label>Тип
+        <select id="newFieldType">
+          <option value="text">Текст</option>
+          <option value="number">Число</option>
+          <option value="date">Дата</option>
+        </select>
+      </label>
+    </div>
+    <button class="btn btn--primary" id="addFieldBtn">Добавить поле</button>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Текущие поля</div>
+      <ul id="fieldDefsList" class="field-defs-list"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Карточка клиента -->
+<div class="modal-overlay" id="clientModalOverlay">
+  <div class="modal" id="clientModal">
+    <button class="modal__close" data-close>&times;</button>
+    <h2 id="clientModalTitle">Клиент</h2>
+
+    <div class="modal__grid">
+      <label>Имя
+        <input type="text" id="fc_name">
+      </label>
+      <label>Компания
+        <input type="text" id="fc_company">
+      </label>
+      <label>Телефон
+        <input type="tel" id="fc_phone" inputmode="numeric" pattern="[0-9]*" placeholder="только цифры">
+      </label>
+      <label>Email
+        <input type="email" id="fc_email" placeholder="name@example.com" required>
+      </label>
+      <label>Менеджер
+        <select id="fc_manager">
+          <option>Алина С.</option>
+          <option>Денис К.</option>
+        </select>
+      </label>
+      <label>Источник
+        <select id="fc_source">
+          <option>Wildberries</option>
+          <option>Ozon</option>
+          <option>Сайт</option>
+          <option>Рекомендация</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Теги</div>
+      <input type="text" id="fc_tags" placeholder="через запятую, напр.: срочно, повтор">
+    </div>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Заметки</div>
+      <textarea id="fc_notes" rows="2" placeholder="Заметки по клиенту"></textarea>
+    </div>
+
+    <div class="modal__section">
+      <div class="modal__section-title">Сделки клиента</div>
+      <div id="clientDealsList" class="client-deals-list"></div>
+    </div>
+
+    <div class="modal__actions">
+      <button class="btn btn--danger" id="deleteClientBtn">Удалить</button>
+      <button class="btn btn--primary" id="saveClientBtn">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

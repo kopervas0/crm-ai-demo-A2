@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# База данных генерируется при запуске — в репозиторий не кладём
+*.db
+ai-crm-backend/data/*.db
+
+# ОС / редакторы
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

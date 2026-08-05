@@ -1,0 +1,90 @@
+[
+  {
+    "id": "c1",
+    "name": "Иван Петров",
+    "company": "ООО «Вымпел»",
+    "phone": "79991234567",
+    "email": "petrov@vympel.ru",
+    "source": "Wildberries",
+    "manager": "Алина С.",
+    "tags": ["маркетплейс", "срочно"],
+    "notes": ""
+  },
+  {
+    "id": "c2",
+    "name": "Ольга Смирнова",
+    "company": "ИП Смирнова",
+    "phone": "79992221100",
+    "email": "smirnova@mail.ru",
+    "source": "Ozon",
+    "manager": "Денис К.",
+    "tags": ["маркетплейс"],
+    "notes": ""
+  },
+  {
+    "id": "c3",
+    "name": "Сергей Ким",
+    "company": "ООО «АгроТрейд»",
+    "phone": "79993334455",
+    "email": "kim@agrotrade.ru",
+    "source": "Сайт",
+    "manager": "Алина С.",
+    "tags": ["крупная сделка"],
+    "notes": ""
+  },
+  {
+    "id": "c4",
+    "name": "Мария Волкова",
+    "company": "ИП Волкова",
+    "phone": "79995556677",
+    "email": "volkova@mail.ru",
+    "source": "Wildberries",
+    "manager": "Денис К.",
+    "tags": ["повтор"],
+    "notes": ""
+  },
+  {
+    "id": "c5",
+    "name": "Артём Novikov",
+    "company": "ООО «ТехноСклад»",
+    "phone": "79997778899",
+    "email": "novikov@technosklad.ru",
+    "source": "Рекомендация",
+    "manager": "Алина С.",
+    "tags": ["крупная сделка", "приоритет"],
+    "notes": ""
+  },
+  {
+    "id": "c6",
+    "name": "Наталья Егорова",
+    "company": "ИП Егорова",
+    "phone": "79991112233",
+    "email": "egorova@mail.ru",
+    "source": "Ozon",
+    "manager": "Денис К.",
+    "tags": [],
+    "notes": ""
+  },
+  {
+    "id": "c7",
+    "name": "Павел Игнатов",
+    "company": "ООО «Старт»",
+    "phone": "79994443322",
+    "email": "ignatov@start.ru",
+    "source": "Сайт",
+    "manager": "Алина С.",
+    "tags": ["отказ по цене"],
+    "notes": ""
+  },
+  {
+    "id": "c8",
+    "name": "Екатерина Белова",
+    "company": "ИП Белова",
+    "phone": "79998880011",
+    "email": "belova@mail.ru",
+    "source": "Сайт",
+    "manager": "Денис К.",
+    "tags": ["новый контакт"],
+    "notes": "Пока без активных сделок — звонили на выставке"
+  }
+]
